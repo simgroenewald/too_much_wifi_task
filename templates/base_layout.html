@@ -1,0 +1,39 @@
+{% load static %}
+
+<!-- This emplate will be on every page rendered and the specific code for other pages will be in the
+  block content.
+Every page will have a logout button if the user is signed in-->
+</thead>
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Pic - N - Choose</title>
+    <link rel="stylesheet" href="{% static 'styles.css' %}">
+  </head>
+  <body>
+    <header class = "wrapper">
+      <h1><a href="{% url 'homepage' %}"><img src="{% static 'logo.png'%}"/></a></h1>
+      <p>Click the logo to return to the homepage.</p>
+      <nav>
+        <ul>
+          {% if user.is_authenticated %}
+          <li>
+            <form class="logout-link" action="{% url 'accounts:logout' %}" method="post">
+              {% csrf_token %}
+              <button type="submit" >Log Out</button>
+            </form>
+          </li>
+          {% else %}
+            <li><a href="{% url 'accounts:login' %}">Log in</a> </li>
+            <li><a href="{% url 'accounts:signup' %}">Sign up</a> </li>
+          {% endif %}
+        </ul>
+      </nav>
+
+    <div class="wrapper">
+      {% block content %}
+      {% endblock %}
+    </div>
+  </body>
+</html>

@@ -1,0 +1,15 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<div class="upload_image">
+  <h1>Upload Image Here</h1>
+  <p>The user will be able to upload images here using click and drag or browse</p>
+  <!-- enctype needed for image upload fields-->
+  <form class="site-form" action="{% url 'upload_image:upload_image' %}" method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{form}}
+    <input type="submit" name="" value="Upload">
+  </form>
+</div>
+
+{% endblock %}

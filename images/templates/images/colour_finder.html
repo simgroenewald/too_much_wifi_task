@@ -1,0 +1,14 @@
+{% extends 'base_layout.html' %}
+{% block content %}
+<h1>Colour Finder</h1>
+<div class="colour_finder">
+  <h2>The RGB value for the middle pixel of this image is: {{rgb_value}}</h2>
+  <h2>Name: {{image.image_name}}</h2>
+  <img src="{{image.image_file.url}}"/>
+  <p>Posted at: {{image.image_date}}</p>
+</div>
+
+
+
+
+{% endblock %}

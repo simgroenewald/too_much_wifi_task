@@ -1,0 +1,15 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<h1>List of Images</h1>
+<h2>Select an image to find the RGBvalue of the middle pixel.</h2>
+<div class="images">
+  {% for image in images %}
+    <div class="image">
+      <p>{{image.image_name}}</p>
+      <h2><a href="{% url 'images:colour_finder' image_name=image.image_name %}"><img src="{{image.image_file.url}}"/></a></h2>
+      <p>{{image.image_date}}</p>
+    </div>
+  {% endfor %}
+</div>
+{% endblock %}

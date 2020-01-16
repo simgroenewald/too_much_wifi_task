@@ -1,0 +1,16 @@
+{% extends 'base_layout.html' %}
+
+{% block content %}
+<!DOCTYPE html>
+
+    <h1>Sign Up</h1>
+    <form class="site-form" action="/accounts/signup/" method="post">
+      <!--Needed to validate that data is from post request within application-->
+      {% csrf_token %}
+      {{form}}
+      <input type="submit" value="Signup">
+
+    </form>
+
+
+{% endblock %}
